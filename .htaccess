@@ -1,0 +1,26 @@
+RewriteEngine on
+
+#RewriteCond %{SERVER_PORT} 80 
+#RewriteRule ^(.*)$ https://www.siteadres.com/$1 [R,L]
+
+#RewriteCond %{HTTP_HOST} ^siteadres.com. [NC]
+#RewriteRule ^(.*)$ https://www.siteadres.com/$1 [L,R=301,NC]
+
+
+#Seo url oluşturma
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#404 hata sayfası yönlendirme kodu
+#ErrorDocument 404 localhost/404.php
+
+
+RewriteRule ^sayfa-([0-9a-zA-Z-_]+) menu-detay.php?sef=$1 [L,QSA]
+RewriteRule ^kategori-([0-9a-zA-Z-_]+)  market.php?sef=$1 [L,QSA]
+RewriteRule ^urun-([0-9a-zA-Z-_]+)-([0-9]+)$  urun-detay.php?sef=$1&urun_id=$2 [L,QSA]
+
+RewriteRule ^duyuru-([0-9a-zA-Z-_]+)-([0-9]+)$  duyuru-detay.php?sef=$1&duyuru_id=$2 [L,QSA]
+RewriteRule ^oyuncu-([0-9a-zA-Z-_]+)  oyuncu-detay.php?sef=$1 [L,QSA]
+RewriteRule ^kredigonder-([0-9a-zA-Z-_]+)  kredi-gonder.php?sef=$1 [L,QSA]
+
